@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">DesafioConcrete</string>
+
+    <string name="RepoListTitle">GitHub Java Repositories</string>
+    <string name="pullRequestTitle">Pull Request Title</string>
+    <string name="pullRequestOpenedText">%1$d Opened / %2$d Closed</string>
+    <string name="NoDescription">No description</string>
+    <string name="empty_list_text">There is no item to display</string>
+    <string name="error_on_list_text">There was a problem to fetch the list of items</string>
+    <string name="repository_fetch_failed">Failed to fetch repositories</string>
+    <string name="try_again_snack">Try Again</string>
+
+    <string name="accessibility_fork_symbol">Number of Forks</string>
+    <string name="accessibility_star_symbol">Number of Stars</string>
+</resources>

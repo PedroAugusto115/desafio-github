@@ -1,0 +1,24 @@
+[
+  {
+    "id": 155497117,
+    "html_url": "https://github.com/ReactiveX/RxJava/pull/5748",
+    "title": "2.x: Check runnable == null in *Scheduler.schedule*().",
+    "user": {
+      "login": "artem-zinnatullin",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/967132?v=4"
+    },
+    "body": "To enforce `@NotNull` guarantee for the PR #5734, see  https://github.com/ReactiveX/RxJava/pull/5734/files#r153951238",
+    "created_at": "2017-11-30T01:30:42Z"
+  },
+  {
+    "id": 153861061,
+    "html_url": "https://github.com/ReactiveX/RxJava/pull/5734",
+    "title": "2.x: RxJavaPlugins unwrapRunnable",
+    "user": {
+      "login": "lukaszguz",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/16707617?v=4"
+    },
+    "body": "Hi,\r\nRxJava2 version: [2.1.6]\r\nIt is reference to https://github.com/ReactiveX/RxJava/issues/5733",
+    "created_at": "2017-11-21T11:12:31Z"
+  }
+]

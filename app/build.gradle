@@ -1,0 +1,112 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'org.jetbrains.kotlin.android.extensions'
+apply plugin: 'org.jetbrains.kotlin.kapt'
+apply from: "$rootDir/tools/jacoco.gradle"
+apply from: "$rootDir/tools/test-butler.gradle"
+
+jacoco {
+    toolVersion = '0.8.1'
+}
+
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+}
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        applicationId 'concrete.desafio'
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 3
+        versionName '3.0'
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+
+    def baseUrl = '"https://api.github.com"'
+
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+            testCoverageEnabled true
+
+            buildConfigField 'String', 'BASE_URL', baseUrl
+        }
+        release {
+            debuggable false
+            minifyEnabled true
+            buildConfigField 'String', 'BASE_URL', baseUrl
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        lintConfig file("$rootDir/tools/lintConfig/android-lint.xml")
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
+    }
+
+    androidExtensions{
+        experimental = true
+    }
+
+    testOptions {
+        execution 'ANDROIDX_TEST_ORCHESTRATOR'
+        animationsDisabled true
+    }
+
+    connectedCheck.dependsOn installButlerApk
+}
+
+dependencies {
+
+    // Architecture
+    kapt 'androidx.lifecycle:lifecycle-compiler:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+
+    // Support libs
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation "androidx.constraintlayout:constraintlayout:${constraintLayoutVersion}"
+
+    // Network
+    implementation "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}"
+    implementation "com.squareup.picasso:picasso:${picassoVersion}"
+    implementation "com.squareup.retrofit2:converter-gson:${gsonConverterVersion}"
+    implementation "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlinVersion}"
+
+    // Testing
+    androidTestImplementation "br.com.concretesolutions:requestmatcher:${requestmatcherVersion}"
+    androidTestImplementation 'androidx.appcompat:appcompat:1.0.0'
+    androidTestImplementation 'com.google.android.material:material:1.0.0'
+    androidTestImplementation 'androidx.recyclerview:recyclerview:1.0.0'
+    androidTestImplementation 'androidx.annotation:annotation:1.0.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test:rules:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.1.0'
+    androidTestImplementation "com.linkedin.testbutler:test-butler-library:${rootProject.ext.testButler}"
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:${okHttpVersion}"
+    androidTestUtil 'androidx.test:orchestrator:1.1.1'
+
+    testImplementation "junit:junit:${jUnitVersion}"
+}
+
+project.gradle.taskGraph.whenReady {
+    connectedDebugAndroidTest {
+        ignoreFailures = true
+    }
+}

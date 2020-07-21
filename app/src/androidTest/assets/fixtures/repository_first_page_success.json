@@ -1,0 +1,184 @@
+{
+  "items": [
+    {
+      "id": 7508411,
+      "name": "RxJava",
+      "owner": {
+        "login": "ReactiveX",
+        "avatar_url": "https://avatars1.githubusercontent.com/u/6407041?v=4"
+      },
+      "description": "RxJava – Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using observable sequences for the Java VM.",
+      "stargazers_count": 29128,
+      "forks_count": 5132,
+      "open_issues_count": 34
+    },
+    {
+      "id": 22790488,
+      "name": "java-design-patterns",
+      "owner": {
+        "login": "iluwatar",
+        "avatar_url": "https://avatars1.githubusercontent.com/u/582346?v=4"
+      },
+      "description": "Design patterns implemented in Java",
+      "stargazers_count": 27033,
+      "forks_count": 8638,
+      "open_issues_count": 179
+    },
+    {
+      "id": 507775,
+      "name": "elasticsearch",
+      "owner": {
+        "login": "elastic",
+        "avatar_url": "https://avatars0.githubusercontent.com/u/6764390?v=4"
+      },
+      "description": "Open Source, Distributed, RESTful Search Engine",
+      "stargazers_count": 26951,
+      "forks_count": 9451,
+      "open_issues_count": 1309
+    },
+    {
+      "id": 19148949,
+      "name": "MPAndroidChart",
+      "owner": {
+        "login": "PhilJay",
+        "avatar_url": "https://avatars1.githubusercontent.com/u/6759734?v=4"
+      },
+      "description": "A powerful Android chart view / graph view library, supporting line- bar- pie- radar- bubble- and candlestick charts as well as scaling, dragging and animations.",
+      "stargazers_count": 19337,
+      "forks_count": 5506,
+      "open_issues_count": 1197
+    },
+    {
+      "id": 3432266,
+      "name": "kotlin",
+      "owner": {
+        "login": "JetBrains",
+        "avatar_url": "https://avatars2.githubusercontent.com/u/878437?v=4"
+      },
+      "description": "The Kotlin Programming Language",
+      "stargazers_count": 19267,
+      "forks_count": 2067,
+      "open_issues_count": 72
+    },
+    {
+      "id": 8575137,
+      "name": "butterknife",
+      "owner": {
+        "login": "JakeWharton",
+        "avatar_url": "https://avatars0.githubusercontent.com/u/66577?v=4"
+      },
+      "description": "Bind Android views and callbacks to fields and methods.",
+      "stargazers_count": 19247,
+      "forks_count": 3871,
+      "open_issues_count": 58
+    },
+    {
+      "id": 11267509,
+      "name": "glide",
+      "owner": {
+        "login": "bumptech",
+        "avatar_url": "https://avatars0.githubusercontent.com/u/423539?v=4"
+      },
+      "description": "An image loading and caching library for Android focused on smooth scrolling",
+      "stargazers_count": 18975,
+      "forks_count": 3760,
+      "open_issues_count": 114
+    },
+    {
+      "id": 34824499,
+      "name": "leakcanary",
+      "owner": {
+        "login": "square",
+        "avatar_url": "https://avatars0.githubusercontent.com/u/82592?v=4"
+      },
+      "description": "A memory leak detection library for Android and Java.",
+      "stargazers_count": 17646,
+      "forks_count": 2899,
+      "open_issues_count": 47
+    },
+    {
+      "id": 70198875,
+      "name": "lottie-android",
+      "owner": {
+        "login": "airbnb",
+        "avatar_url": "https://avatars3.githubusercontent.com/u/698437?v=4"
+      },
+      "description": "Render After Effects animations natively on Android and iOS, Web, and React Native",
+      "stargazers_count": 17371,
+      "forks_count": 2563,
+      "open_issues_count": 38
+    },
+    {
+      "id": 5070389,
+      "name": "EventBus",
+      "owner": {
+        "login": "greenrobot",
+        "avatar_url": "https://avatars0.githubusercontent.com/u/242242?v=4"
+      },
+      "description": "Event bus for Android and Java that simplifies communication between Activities, Fragments, Threads, Services, etc. Less code, better quality.",
+      "stargazers_count": 16626,
+      "forks_count": 3849,
+      "open_issues_count": 87
+    },
+    {
+      "id": 2562751,
+      "name": "zxing",
+      "owner": {
+        "login": "zxing",
+        "avatar_url": "https://avatars1.githubusercontent.com/u/1122572?v=4"
+      },
+      "description": "ZXing (\"Zebra Crossing\") barcode scanning library for Java, Android",
+      "stargazers_count": 16487,
+      "forks_count": 6997,
+      "open_issues_count": 10
+    },
+    {
+      "id": 81975372,
+      "name": "interviews",
+      "owner": {
+        "login": "kdn251",
+        "avatar_url": "https://avatars1.githubusercontent.com/u/16903644?v=4"
+      },
+      "description": "Everything you need to know to get the job.",
+      "stargazers_count": 16330,
+      "forks_count": 2387,
+      "open_issues_count": 11
+    },
+    {
+      "id": 2862290,
+      "name": "Android-Universal-Image-Loader",
+      "owner": {
+        "login": "nostra13",
+        "avatar_url": "https://avatars1.githubusercontent.com/u/1223348?v=4"
+      },
+      "description": "Powerful and flexible library for loading, caching and displaying images on Android.",
+      "stargazers_count": 15823,
+      "forks_count": 6478,
+      "open_issues_count": 440
+    },
+    {
+      "id": 18347476,
+      "name": "iosched",
+      "owner": {
+        "login": "google",
+        "avatar_url": "https://avatars1.githubusercontent.com/u/1342004?v=4"
+      },
+      "description": "The Google I/O 2017 Android App",
+      "stargazers_count": 15174,
+      "forks_count": 5293,
+      "open_issues_count": 62
+    },
+    {
+      "id": 10057936,
+      "name": "picasso",
+      "owner": {
+        "login": "square",
+        "avatar_url": "https://avatars0.githubusercontent.com/u/82592?v=4"
+      },
+      "description": "A powerful image downloading and caching library for Android",
+      "stargazers_count": 14588,
+      "forks_count": 3708,
+      "open_issues_count": 194
+    }
+  ]
+}

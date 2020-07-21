@@ -1,0 +1,49 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="DefaultText">
+        <item name="android:textSize">@dimen/text_small</item>
+    </style>
+
+    <style name="DefaultText.Description">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:lines">3</item>
+        <item name="android:maxLines">3</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="DefaultText.Names">
+        <item name="android:textColor">@color/colorPrimaryLight</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="MediumTextBold">
+        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MediumTextBold.Subtitle">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="BigBoldText">
+        <item name="android:textSize">@dimen/text_big</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="BigBoldText.Description">
+        <item name="android:textColor">@color/colorPrimaryLight</item>
+    </style>
+
+    <style name="BigBoldText.Title">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
+</resources>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pull_request_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/pull_request_toolbar"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:theme="?attr/actionBarTheme"
+        android:minHeight="?attr/actionBarSize"
+        android:title="@string/pullRequestTitle"
+        android:elevation="@dimen/toolbar_elevation"
+        app:titleTextColor="@color/colorWhite"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        style="@style/MediumTextBold.Subtitle"
+        android:id="@+id/repository_open_issues"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="@dimen/sub_toolbar_height"
+        android:background="@color/colorPrimary"
+        android:elevation="@dimen/toolbar_elevation"
+        app:layout_constraintTop_toBottomOf="@+id/pull_request_toolbar"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:text="@string/pullRequestOpenedText"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/pull_request_list"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="@dimen/match_constraint"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/repository_open_issues"
+        app:layout_constraintBottom_toTopOf="@+id/load_more_bar"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layoutManager="LinearLayoutManager"
+        tools:listitem="@layout/list_item_repository_pull"
+        tools:visibility="visible"/>
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:id="@+id/load_more_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <include layout="@layout/view_empty_layout" />
+
+    <include layout="@layout/view_loading_layout" />
+
+    <include layout="@layout/view_error_layout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,23 @@
+<resources>
+    <!-- Common -->
+    <dimen name="match_constraint">0dp</dimen>
+    <dimen name="default_margin">16dp</dimen>
+    <dimen name="text_big">17sp</dimen>
+    <dimen name="text_medium">15sp</dimen>
+    <dimen name="text_small">12sp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
+    <dimen name="ico_margin">10dp</dimen>
+    <dimen name="ico_text_margin">4dp</dimen>
+    <dimen name="user_photo_size">50dp</dimen>
+
+    <!-- repository item -->
+    <dimen name="ico_big_margin">70dp</dimen>
+    <dimen name="username_text_width">80dp</dimen>
+
+    <!-- repository list activity -->
+    <dimen name="recycler_margin_bottom">8dp</dimen>
+    <dimen name="recycler_gone_margin_bottom">0dp</dimen>
+
+    <!-- pull request list item -->
+    <dimen name="sub_toolbar_height">30dp</dimen>
+</resources>

@@ -1,0 +1,100 @@
+{
+  "items": [
+    {
+      "id": 55886798,
+      "name": "BaseRecyclerViewAdapterHelper",
+      "owner": {
+        "login": "CymChad",
+        "avatar_url": "https://avatars1.githubusercontent.com/u/7698209?v=4"
+      },
+      "description": "BRVAH:Powerful and flexible RecyclerAdapter",
+      "stargazers_count": 11131,
+      "forks_count": 2440,
+      "open_issues_count": 9
+    },
+    {
+      "id": 4839957,
+      "name": "SlidingMenu",
+      "owner": {
+        "login": "jfeinstein10",
+        "avatar_url": "https://avatars1.githubusercontent.com/u/1269143?v=4"
+      },
+      "description": "An Android library that allows you to easily create applications with slide-in menus. You may use it in your Android apps provided that you cite this project and include the license in your app. Thanks!",
+      "stargazers_count": 10797,
+      "forks_count": 5558,
+      "open_issues_count": 307
+    },
+    {
+      "id": 67481986,
+      "name": "tinker",
+      "owner": {
+        "login": "Tencent",
+        "avatar_url": "https://avatars3.githubusercontent.com/u/18461506?v=4"
+      },
+      "description": "Tinker is a hot-fix solution library for Android, it supports dex, library and resources update without reinstall apk.",
+      "stargazers_count": 10668,
+      "forks_count": 2245,
+      "open_issues_count": 26
+    },
+    {
+      "id": 31865176,
+      "name": "Material-Animations",
+      "owner": {
+        "login": "lgvalle",
+        "avatar_url": "https://avatars0.githubusercontent.com/u/354372?v=4"
+      },
+      "description": "Android Transition animations explanation with examples.",
+      "stargazers_count": 10594,
+      "forks_count": 2192,
+      "open_issues_count": 14
+    },
+    {
+      "id": 23112526,
+      "name": "Android-CleanArchitecture",
+      "owner": {
+        "login": "android10",
+        "avatar_url": "https://avatars0.githubusercontent.com/u/1360604?v=4"
+      },
+      "description": "This is a sample app that is part of a series of blog posts I have written about how to architect an android application using Uncle Bob's clean architecture approach.",
+      "stargazers_count": 10382,
+      "forks_count": 2539,
+      "open_issues_count": 110
+    },
+    {
+      "id": 45261969,
+      "name": "plaid",
+      "owner": {
+        "login": "nickbutcher",
+        "avatar_url": "https://avatars2.githubusercontent.com/u/352556?v=4"
+      },
+      "description": "An Android app which provides design news & inspiration as well as being an example of implementing material design.",
+      "stargazers_count": 10174,
+      "forks_count": 2154,
+      "open_issues_count": 38
+    },
+    {
+      "id": 1388245,
+      "name": "android-async-http",
+      "owner": {
+        "login": "loopj",
+        "avatar_url": "https://avatars2.githubusercontent.com/u/104009?v=4"
+      },
+      "description": "An Asynchronous HTTP Library for Android",
+      "stargazers_count": 10063,
+      "forks_count": 4339,
+      "open_issues_count": 217
+    },
+    {
+      "id": 3116751,
+      "name": "androidannotations",
+      "owner": {
+        "login": "androidannotations",
+        "avatar_url": "https://avatars3.githubusercontent.com/u/1315313?v=4"
+      },
+      "description": "Fast Android Development. Easy maintainance.",
+      "stargazers_count": 9901,
+      "forks_count": 2460,
+      "open_issues_count": 50
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/default_margin"
+    android:background="?selectableItemBackground">
+
+    <TextView
+        style="@style/BigBoldText.Title"
+        android:id="@+id/repository_name"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/layout_barrier"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@tools:sample/lorem" />
+
+    <TextView
+        style="@style/DefaultText.Description"
+        android:id="@+id/repository_description"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/layout_barrier"
+        app:layout_constraintStart_toStartOf="@+id/repository_name"
+        app:layout_constraintTop_toBottomOf="@+id/repository_name"
+        tools:text="@tools:sample/lorem/random" />
+
+    <ImageView
+        android:id="@+id/fork_icon_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/accessibility_fork_symbol"
+        android:src="@drawable/ic_fork"
+        android:layout_marginTop="@dimen/ico_margin"
+        app:layout_constraintStart_toStartOf="@id/repository_description"
+        app:layout_constraintTop_toBottomOf="@id/repository_description" />
+
+    <TextView
+        style="@style/BigBoldText.Description"
+        android:id="@+id/repository_fork_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ico_text_margin"
+        app:layout_constraintStart_toEndOf="@id/fork_icon_image"
+        app:layout_constraintTop_toTopOf="@id/fork_icon_image"
+        app:layout_constraintBottom_toBottomOf="@id/fork_icon_image"
+        tools:text="5500"/>
+
+    <ImageView
+        android:id="@+id/star_icon_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/accessibility_star_symbol"
+        android:src="@drawable/ic_star"
+        android:layout_marginStart="@dimen/ico_big_margin"
+        app:layout_constraintTop_toTopOf="@id/fork_icon_image"
+        app:layout_constraintBottom_toBottomOf="@id/fork_icon_image"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        style="@style/BigBoldText.Description"
+        android:id="@+id/repository_star_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ico_text_margin"
+        app:layout_constraintTop_toTopOf="@id/star_icon_image"
+        app:layout_constraintBottom_toBottomOf="@id/star_icon_image"
+        app:layout_constraintStart_toEndOf="@id/star_icon_image"
+        tools:text="12000"/>
+
+    <ImageView
+        android:id="@+id/user_photo"
+        android:layout_width="@dimen/user_photo_size"
+        android:layout_height="@dimen/user_photo_size"
+        android:importantForAccessibility="no"
+        app:layout_constraintBottom_toTopOf="@+id/user_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/layout_barrier"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:src="@drawable/img_placeholder" />
+
+    <TextView
+        style="@style/DefaultText.Names"
+        android:id="@+id/user_login"
+        android:layout_width="@dimen/username_text_width"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_photo"
+        tools:text="@tools:sample/full_names" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/layout_barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left"
+        app:constraint_referenced_ids="user_login,user_photo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

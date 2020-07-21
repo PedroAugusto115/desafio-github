@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/default_margin"
+    android:background="?selectableItemBackground">
+
+    <TextView
+        style="@style/BigBoldText.Title"
+        android:id="@+id/pull_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pullRequestTitle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        style="@style/DefaultText.Description"
+        android:id="@+id/pull_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pull_title"
+        tools:text="@tools:sample/lorem/random"/>
+
+    <ImageView
+        android:id="@+id/pull_user_photo"
+        android:layout_width="@dimen/user_photo_size"
+        android:layout_height="@dimen/user_photo_size"
+        android:layout_marginTop="@dimen/ico_margin"
+        android:importantForAccessibility="no"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pull_description"
+        tools:src="@drawable/img_placeholder"/>
+
+    <TextView
+        style="@style/DefaultText.Names"
+        android:id="@+id/pull_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ico_text_margin"
+        app:layout_constraintLeft_toRightOf="@+id/pull_user_photo"
+        app:layout_constraintTop_toTopOf="@+id/pull_user_photo"
+        app:layout_constraintBottom_toBottomOf="@+id/pull_user_photo"
+        tools:text="@tools:sample/full_names"/>
+
+    <TextView
+        style="@style/DefaultText.Names"
+        android:id="@+id/pull_open_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/pull_user_photo"
+        app:layout_constraintBottom_toBottomOf="@+id/pull_user_photo"
+        tools:text="@tools:sample/date/ddmmyy"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

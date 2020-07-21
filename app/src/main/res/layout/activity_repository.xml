@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/repository_layout_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/repositories_toolbar"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:theme="?attr/actionBarTheme"
+        android:minHeight="?attr/actionBarSize"
+        android:title="@string/RepoListTitle"
+        android:elevation="@dimen/toolbar_elevation"
+        app:titleTextColor="@color/colorWhite"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:id="@+id/load_more_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/repository_recycler_view"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="@dimen/match_constraint"
+        android:layout_marginBottom="@dimen/recycler_margin_bottom"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/repositories_toolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/load_more_bar"
+        app:layout_goneMarginBottom="@dimen/recycler_gone_margin_bottom"
+        app:layoutManager="LinearLayoutManager"
+        tools:visibility="visible"
+        tools:listitem="@layout/list_item_repository" />
+
+    <include layout="@layout/view_empty_layout" />
+
+    <include layout="@layout/view_loading_layout" />
+
+    <include layout="@layout/view_error_layout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
