@@ -9,7 +9,7 @@
     android:padding="@dimen/default_margin"
     android:background="?selectableItemBackground">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         style="@style/BigBoldText.Title"
         android:id="@+id/repository_name"
         android:layout_width="@dimen/match_constraint"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@tools:sample/lorem" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         style="@style/DefaultText.Description"
         android:id="@+id/repository_description"
         android:layout_width="@dimen/match_constraint"
@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@+id/repository_name"
         tools:text="@tools:sample/lorem/random" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/fork_icon_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
         app:layout_constraintStart_toStartOf="@id/repository_description"
         app:layout_constraintTop_toBottomOf="@id/repository_description" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         style="@style/BigBoldText.Description"
         android:id="@+id/repository_fork_number"
         android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
         app:layout_constraintBottom_toBottomOf="@id/fork_icon_image"
         tools:text="5500"/>
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/star_icon_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
         app:layout_constraintBottom_toBottomOf="@id/fork_icon_image"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         style="@style/BigBoldText.Description"
         android:id="@+id/repository_star_number"
         android:layout_width="wrap_content"
@@ -72,7 +72,7 @@
         app:layout_constraintStart_toEndOf="@id/star_icon_image"
         tools:text="12000"/>
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/user_photo"
         android:layout_width="@dimen/user_photo_size"
         android:layout_height="@dimen/user_photo_size"
@@ -84,7 +84,7 @@
         app:layout_constraintVertical_chainStyle="packed"
         tools:src="@drawable/img_placeholder" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         style="@style/DefaultText.Names"
         android:id="@+id/user_login"
         android:layout_width="@dimen/username_text_width"

@@ -1,17 +1,18 @@
 package concrete.desafio.ui.adapter
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import concrete.desafio.R
 import concrete.desafio.extension.loadFromUrl
 import concrete.desafio.model.Repository
-import java.util.*
 
-class RepositoryAdapter(private val listener: (Repository) -> Unit) : RecyclerView.Adapter<RepositoryAdapter.RepositoryItemViewHolder>() {
+class RepositoryAdapter(private val listener: (Repository) -> Unit) :
+        RecyclerView.Adapter<RepositoryAdapter.RepositoryItemViewHolder>()
+{
 
     private var items: ArrayList<Repository> = arrayListOf()
 

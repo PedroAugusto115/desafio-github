@@ -11,6 +11,8 @@ import androidx.core.content.ContextCompat
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import concrete.desafio.R
 import concrete.desafio.api.ApiResponse
 import concrete.desafio.model.PullRequest
@@ -40,8 +42,8 @@ class PullRequestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_repository_pulls)
 
-        val bundle: Bundle = this.intent.extras
-        repository = bundle.getParcelable(REPOSITORY_TAG)
+        val bundle: Bundle = this.intent.extras!!
+        repository = bundle.getParcelable(REPOSITORY_TAG)!!
 
         setupToolbar(repository)
         setupRecyclerView()

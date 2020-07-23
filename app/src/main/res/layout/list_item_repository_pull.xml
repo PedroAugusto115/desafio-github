@@ -9,7 +9,7 @@
     android:padding="@dimen/default_margin"
     android:background="?selectableItemBackground">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         style="@style/BigBoldText.Title"
         android:id="@+id/pull_title"
         android:layout_width="wrap_content"
@@ -18,7 +18,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         style="@style/DefaultText.Description"
         android:id="@+id/pull_description"
         android:layout_width="wrap_content"
@@ -27,7 +27,7 @@
         app:layout_constraintTop_toBottomOf="@+id/pull_title"
         tools:text="@tools:sample/lorem/random"/>
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/pull_user_photo"
         android:layout_width="@dimen/user_photo_size"
         android:layout_height="@dimen/user_photo_size"
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/pull_description"
         tools:src="@drawable/img_placeholder"/>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         style="@style/DefaultText.Names"
         android:id="@+id/pull_username"
         android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/pull_user_photo"
         tools:text="@tools:sample/full_names"/>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         style="@style/DefaultText.Names"
         android:id="@+id/pull_open_date"
         android:layout_width="wrap_content"

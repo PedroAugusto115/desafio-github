@@ -1,19 +1,19 @@
 package concrete.desafio.ui.adapter
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import concrete.desafio.R
 import concrete.desafio.extension.loadFromUrl
 import concrete.desafio.extension.toSimpleDate
 import concrete.desafio.model.PullRequest
-import java.util.*
 
 class PullRequestAdapter(private val listener: (url: String) -> Unit) :
-        RecyclerView.Adapter<PullRequestAdapter.PullRequestViewHolder>() {
+        RecyclerView.Adapter<PullRequestAdapter.PullRequestViewHolder>()
+{
 
     private var items: ArrayList<PullRequest> = arrayListOf()
 

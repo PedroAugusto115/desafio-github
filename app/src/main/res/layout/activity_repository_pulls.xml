@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/pull_request_toolbar"
         android:layout_width="@dimen/match_constraint"
         android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         style="@style/MediumTextBold.Subtitle"
         android:id="@+id/repository_open_issues"
         android:layout_width="@dimen/match_constraint"
@@ -33,7 +33,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         tools:text="@string/pullRequestOpenedText"/>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pull_request_list"
         android:layout_width="@dimen/match_constraint"
         android:layout_height="@dimen/match_constraint"

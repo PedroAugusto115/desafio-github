@@ -4,12 +4,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import concrete.desafio.R
 import concrete.desafio.api.ApiResponse
 import concrete.desafio.model.Page
@@ -54,8 +54,8 @@ class RepositoryActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         repository_recycler_view.addOnScrollListener(object: RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
-                val layoutManager = recyclerView?.layoutManager as LinearLayoutManager
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
                 val lastPosition = layoutManager.findLastCompletelyVisibleItemPosition()
                 if(lastPosition == adapter.itemCount - 1)
                     viewModel.loadRepositories()
@@ -86,7 +86,7 @@ class RepositoryActivity : AppCompatActivity() {
                 return
             }
 
-            viewModel.repositories.addAll(ArrayList(it.data?.items))
+            viewModel.repositories.addAll(it.data?.items as List<Repository>)
             viewModel.nextPage = it.data?.nextPage
             viewModel.getState().value = ViewState.LIST_ITEM
 
@@ -122,12 +122,12 @@ class RepositoryActivity : AppCompatActivity() {
                 .show()
     }
 
-    override fun onSaveInstanceState(outState: Bundle?) {
+    override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         if(viewModel.repositories.isNotEmpty()) {
             val layoutManager = repository_recycler_view.layoutManager as LinearLayoutManager
             val lastPosition = layoutManager.findLastCompletelyVisibleItemPosition()
-            outState!!.putInt(RECYCLER_VIEW_LAST_VISIBLE_INDEX, lastPosition)
+            outState.putInt(RECYCLER_VIEW_LAST_VISIBLE_INDEX, lastPosition)
         }
     }
 
