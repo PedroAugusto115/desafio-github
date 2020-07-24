@@ -17,7 +17,6 @@ import concrete.desafio.R
 import concrete.desafio.api.ApiResponse
 import concrete.desafio.model.PullRequest
 import concrete.desafio.model.Repository
-import concrete.desafio.ui.activity.RepositoryActivity.Companion.REPOSITORY_TAG
 import concrete.desafio.ui.adapter.PullRequestAdapter
 import concrete.desafio.ui.state.ViewState
 import concrete.desafio.viewmodel.PullRequestViewModel
@@ -25,14 +24,13 @@ import kotlinx.android.synthetic.main.activity_repository_pulls.*
 import kotlinx.android.synthetic.main.view_empty_layout.*
 import kotlinx.android.synthetic.main.view_error_layout.*
 import kotlinx.android.synthetic.main.view_loading_layout.*
+import org.koin.android.ext.android.inject
+
+private const val PULL_REQUEST_LAST_VISIBLE_INDEX = "RECYCLER_VIEW_LAST_VISIBLE_INDEX"
 
 class PullRequestActivity : AppCompatActivity() {
 
-    companion object {
-        const val RECYCLER_VIEW_LAST_VISIBLE_INDEX = "RECYCLER_VIEW_LAST_VISIBLE_INDEX"
-    }
-
-    private lateinit var viewModel: PullRequestViewModel
+    private val viewModel: PullRequestViewModel by inject()
 
     private val adapter = PullRequestAdapter { url -> listViewItemClicked(url)}
 
@@ -53,8 +51,6 @@ class PullRequestActivity : AppCompatActivity() {
                 repository.numberOfForks)
         repository_open_issues.text = opened
 
-        viewModel = ViewModelProviders.of(this)
-                .get(PullRequestViewModel::class.java)
         viewModel.getViewState().observe(
                 this, Observer { state -> updateView(state) })
         viewModel.getPullRequests(repository).observe(
@@ -154,17 +150,17 @@ class PullRequestActivity : AppCompatActivity() {
         if(viewModel.pulls.isNotEmpty()){
             val layoutManager = pull_request_list.layoutManager as LinearLayoutManager
             val lastPosition = layoutManager.findLastCompletelyVisibleItemPosition()
-            outState.putInt(RECYCLER_VIEW_LAST_VISIBLE_INDEX, lastPosition)
+            outState.putInt(PULL_REQUEST_LAST_VISIBLE_INDEX, lastPosition)
         }
     }
 
     private fun restoreInstanceState(savedInstanceState: Bundle){
-        if(savedInstanceState.containsKey(RECYCLER_VIEW_LAST_VISIBLE_INDEX)){
+        if(savedInstanceState.containsKey(PULL_REQUEST_LAST_VISIBLE_INDEX)){
             viewModel.getViewState().value = ViewState.LIST_ITEM
             adapter.addItems(viewModel.pulls)
             adapter.notifyDataSetChanged()
 
-            val lastPosition = savedInstanceState.getInt(RECYCLER_VIEW_LAST_VISIBLE_INDEX)
+            val lastPosition = savedInstanceState.getInt(PULL_REQUEST_LAST_VISIBLE_INDEX)
             val layoutManager = pull_request_list.layoutManager as LinearLayoutManager
             layoutManager.scrollToPosition(lastPosition)
             return

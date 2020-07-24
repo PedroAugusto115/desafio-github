@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DesafioConcrete</string>
+    <string name="app_name">DesafioGitHub</string>
 
     <string name="RepoListTitle">GitHub Java Repositories</string>
     <string name="pullRequestTitle">Pull Request Title</string>

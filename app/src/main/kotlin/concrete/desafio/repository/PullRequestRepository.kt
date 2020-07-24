@@ -5,7 +5,7 @@ import concrete.desafio.api.*
 import concrete.desafio.model.PullRequest
 import retrofit2.Response
 
-object PullRequestRepository {
+class PullRequestRepository {
 
     fun getPullRequestByRepository(items: MutableLiveData<ApiResponse<List<PullRequest>>>,
                                    creator: String, repository: String){

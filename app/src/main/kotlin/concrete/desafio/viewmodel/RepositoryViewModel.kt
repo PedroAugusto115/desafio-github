@@ -8,7 +8,7 @@ import concrete.desafio.model.Repository
 import concrete.desafio.repository.RepositoriesRepository
 import concrete.desafio.ui.state.ViewState
 
-class RepositoryViewModel : ViewModel() {
+class RepositoryViewModel(val api: RepositoriesRepository) : ViewModel() {
 
     var nextPage: Int? = 1
     var repositories = mutableListOf<Repository>()
@@ -39,7 +39,7 @@ class RepositoryViewModel : ViewModel() {
             else
                 state.value = ViewState.LOADING
 
-            RepositoriesRepository.getRepositoriesByPage(page, it)
+            api.getRepositoriesByPage(page, it)
         }
     }
 }

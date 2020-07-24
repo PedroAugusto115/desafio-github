@@ -6,7 +6,7 @@ import concrete.desafio.extension.getNextPage
 import concrete.desafio.model.Page
 import retrofit2.Response
 
-object RepositoriesRepository {
+class RepositoriesRepository {
 
     fun getRepositoriesByPage(liveData: MutableLiveData<ApiResponse<Page>>, page: Int?){
         RemoteData.getInstance().getJavaRepositories(page = page).enqueue(object :

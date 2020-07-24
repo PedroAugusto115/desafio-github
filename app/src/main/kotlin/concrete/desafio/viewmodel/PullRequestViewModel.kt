@@ -8,7 +8,7 @@ import concrete.desafio.model.Repository
 import concrete.desafio.repository.PullRequestRepository
 import concrete.desafio.ui.state.ViewState
 
-class PullRequestViewModel : ViewModel() {
+class PullRequestViewModel(val api: PullRequestRepository) : ViewModel() {
 
     var pulls = mutableListOf<PullRequest>()
 
@@ -35,6 +35,6 @@ class PullRequestViewModel : ViewModel() {
         if (pulls.isEmpty()) state.value = ViewState.FIRST_LOADING
         else state.value = ViewState.LOADING
 
-        PullRequestRepository.getPullRequestByRepository(pullRequestResponse, creator, repository)
+        api.getPullRequestByRepository(pullRequestResponse, creator, repository)
     }
 }

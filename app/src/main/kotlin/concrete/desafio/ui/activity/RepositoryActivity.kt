@@ -1,7 +1,6 @@
 package concrete.desafio.ui.activity
 
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -21,15 +20,14 @@ import kotlinx.android.synthetic.main.activity_repository.*
 import kotlinx.android.synthetic.main.view_empty_layout.*
 import kotlinx.android.synthetic.main.view_error_layout.*
 import kotlinx.android.synthetic.main.view_loading_layout.*
+import org.koin.android.ext.android.inject
+
+const val REPOSITORY_TAG = "Repository"
+private const val RECYCLER_VIEW_LAST_VISIBLE_INDEX = "RECYCLER_VIEW_LAST_VISIBLE_INDEX"
 
 class RepositoryActivity : AppCompatActivity() {
 
-    companion object {
-        const val REPOSITORY_TAG = "Repository"
-        const val RECYCLER_VIEW_LAST_VISIBLE_INDEX = "RECYCLER_VIEW_LAST_VISIBLE_INDEX"
-    }
-
-    lateinit var viewModel: RepositoryViewModel
+    private val viewModel: RepositoryViewModel by inject()
 
     val adapter = RepositoryAdapter { repo -> listViewItemClicked(repo)}
 
@@ -40,8 +38,6 @@ class RepositoryActivity : AppCompatActivity() {
 
         setupRecyclerView()
 
-        viewModel = ViewModelProviders.of(this)
-                .get(RepositoryViewModel::class.java)
         viewModel.getState().observe(
                 this, Observer { state -> updateView(state) })
         viewModel.getPage().observe(
@@ -87,7 +83,7 @@ class RepositoryActivity : AppCompatActivity() {
             }
 
             viewModel.repositories.addAll(it.data?.items as List<Repository>)
-            viewModel.nextPage = it.data?.nextPage
+            viewModel.nextPage = it.data.nextPage
             viewModel.getState().value = ViewState.LIST_ITEM
 
             adapter.addItems(viewModel.repositories)
