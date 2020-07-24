@@ -28,21 +28,21 @@ class RepositoryActivityTest : BaseActivityTest<RepositoryActivity>(RepositoryAc
     fun badRequestOnFirstReqShowsErrorEmptyState() {
         enqueueError(400)
         launchActivity()
-        onView(withId(R.id.errorViewText)).check(matches(isDisplayed()))
+        onView(withId(R.id.error_view_text)).check(matches(isDisplayed()))
     }
 
     @Test
     fun connectionFailureOnFirstReqShowsErrorEmptyState() {
         enqueueConnectionError()
         launchActivity()
-        onView(withId(R.id.errorViewText)).check(matches(isDisplayed()))
+        onView(withId(R.id.error_view_text)).check(matches(isDisplayed()))
     }
 
     @Test
     fun successOnFirstRequestShowsList() {
         enqueueSuccess("repository_first_page_success.json", "search/repositories")
         launchActivity()
-        onView(withId(R.id.repositoryRecyclerView)).check(matches(isDisplayed()))
+        onView(withId(R.id.repository_recycler_view)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -56,7 +56,7 @@ class RepositoryActivityTest : BaseActivityTest<RepositoryActivity>(RepositoryAc
 
         intending(hasComponent(PullRequestActivity::class.java.name)).respondWith(result)
 
-        onView(withId(R.id.repositoryRecyclerView))
+        onView(withId(R.id.repository_recycler_view))
                 .perform(RecyclerViewActions.actionOnItemAtPosition<RepositoryAdapter.RepositoryItemViewHolder>(0, click()))
 
         intended(hasExtraWithKey(REPOSITORY_TAG))
@@ -70,7 +70,7 @@ class RepositoryActivityTest : BaseActivityTest<RepositoryActivity>(RepositoryAc
         launchActivity()
 
         enqueueError(400)
-        onView(withId(R.id.repositoryRecyclerView))
+        onView(withId(R.id.repository_recycler_view))
                 .perform(RecyclerViewActions.scrollToPosition<RepositoryAdapter.RepositoryItemViewHolder>(14))
 
         assert(activityRule.activity.adapter.itemCount == 30)
@@ -82,10 +82,10 @@ class RepositoryActivityTest : BaseActivityTest<RepositoryActivity>(RepositoryAc
         launchActivity()
 
         enqueueConnectionError()
-        onView(withId(R.id.repositoryRecyclerView))
+        onView(withId(R.id.repository_recycler_view))
                 .perform(RecyclerViewActions.scrollToPosition<RepositoryAdapter.RepositoryItemViewHolder>(14))
 
-        onView(allOf(withId(android.support.design.R.id.snackbar_text), withText(R.string.repository_fetch_failed)))
+        onView(allOf(withId(R.id.snackbar_text), withText(R.string.repository_fetch_failed)))
                 .check(matches(isDisplayed()))
     }
 
@@ -95,10 +95,10 @@ class RepositoryActivityTest : BaseActivityTest<RepositoryActivity>(RepositoryAc
         launchActivity()
 
         enqueueSuccess("repository_second_page_success.json", "search/repositories")
-        onView(withId(R.id.repositoryRecyclerView))
+        onView(withId(R.id.repository_recycler_view))
                 .perform(RecyclerViewActions.scrollToPosition<RepositoryAdapter.RepositoryItemViewHolder>(14))
 
-        onView(withId(R.id.repositoryRecyclerView))
+        onView(withId(R.id.repository_recycler_view))
                 .perform(RecyclerViewActions.scrollToPosition<RepositoryAdapter.RepositoryItemViewHolder>(17))
 
         onView(withText("tinker")).check(matches(isDisplayed()))

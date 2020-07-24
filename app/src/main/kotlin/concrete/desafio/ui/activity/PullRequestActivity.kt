@@ -77,8 +77,8 @@ class PullRequestActivity : AppCompatActivity() {
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when(item?.itemId){
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
             android.R.id.home -> {
                 val intent = NavUtils.getParentActivityIntent(this)
                 intent!!.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
@@ -149,12 +149,12 @@ class PullRequestActivity : AppCompatActivity() {
         load_more_bar.visibility = loadingBarVisibility
     }
 
-    override fun onSaveInstanceState(outState: Bundle?) {
+    override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         if(viewModel.pulls.isNotEmpty()){
             val layoutManager = pull_request_list.layoutManager as LinearLayoutManager
             val lastPosition = layoutManager.findLastCompletelyVisibleItemPosition()
-            outState!!.putInt(RECYCLER_VIEW_LAST_VISIBLE_INDEX, lastPosition)
+            outState.putInt(RECYCLER_VIEW_LAST_VISIBLE_INDEX, lastPosition)
         }
     }
 

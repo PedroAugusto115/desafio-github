@@ -1,9 +1,9 @@
 package concrete.desafio
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import androidx.test.espresso.intent.rule.IntentsTestRule
 import androidx.test.rule.ActivityTestRule
-import android.support.v7.app.AppCompatActivity
 import br.com.concretesolutions.requestmatcher.InstrumentedTestRequestMatcherRule
 import br.com.concretesolutions.requestmatcher.RequestMatcherRule
 import concrete.desafio.api.RemoteData

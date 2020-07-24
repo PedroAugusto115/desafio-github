@@ -9,7 +9,6 @@ import androidx.test.espresso.intent.Intents
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasAction
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasData
 import androidx.test.espresso.matcher.ViewMatchers
-import androidx.test.rule.ActivityTestRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import concrete.desafio.model.Person
 import concrete.desafio.model.Repository
@@ -17,7 +16,6 @@ import concrete.desafio.ui.activity.PullRequestActivity
 import concrete.desafio.ui.activity.RepositoryActivity
 import concrete.desafio.ui.adapter.RepositoryAdapter
 import org.hamcrest.CoreMatchers.allOf
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -28,21 +26,21 @@ class PullRequestActivityTest : BaseActivityTest<PullRequestActivity>(PullReques
     fun badRequestOnFirstReqShowsErrorEmptyState() {
         enqueueError(400)
         launchActivity(createIntent())
-        Espresso.onView(ViewMatchers.withId(R.id.errorViewText)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        Espresso.onView(ViewMatchers.withId(R.id.error_view_text)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
 
     @Test
     fun connectionFailureOnFirstReqShowsErrorEmptyState() {
         enqueueConnectionError()
         launchActivity(createIntent())
-        Espresso.onView(ViewMatchers.withId(R.id.errorViewText)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        Espresso.onView(ViewMatchers.withId(R.id.error_view_text)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
 
     @Test
     fun successOnFirstRequestShowsList() {
         enqueueSuccess("pull_request_success.json", "pulls")
         launchActivity(createIntent())
-        Espresso.onView(ViewMatchers.withId(R.id.pullRequestRecyclerView)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        Espresso.onView(ViewMatchers.withId(R.id.pull_request_list)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
 
     @Test
@@ -52,7 +50,7 @@ class PullRequestActivityTest : BaseActivityTest<PullRequestActivity>(PullReques
 
         Intents.init()
 
-        Espresso.onView(ViewMatchers.withId(R.id.pullRequestRecyclerView))
+        Espresso.onView(ViewMatchers.withId(R.id.pull_request_list))
                 .perform(RecyclerViewActions.actionOnItemAtPosition<RepositoryAdapter.RepositoryItemViewHolder>(0, ViewActions.click()))
 
         Intents.intended(allOf(hasAction(Intent.ACTION_VIEW), hasData("https://github.com/ReactiveX/RxJava/pull/5748")))
