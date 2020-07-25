@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,7 +30,7 @@ class RepositoryActivity : AppCompatActivity() {
 
     private val viewModel: RepositoryViewModel by inject()
 
-    val adapter = RepositoryAdapter { repo -> listViewItemClicked(repo)}
+    val adapter = RepositoryAdapter { repo -> listViewItemClicked(repo) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,17 +44,17 @@ class RepositoryActivity : AppCompatActivity() {
         viewModel.getPage().observe(
                 this, Observer { repositories -> updateList(repositories) })
 
-        savedInstanceState?.let{
+        savedInstanceState?.let {
             restoreInstanceState(it)
         }
     }
 
     private fun setupRecyclerView() {
-        repository_recycler_view.addOnScrollListener(object: RecyclerView.OnScrollListener() {
+        repository_recycler_view.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 val layoutManager = recyclerView.layoutManager as LinearLayoutManager
                 val lastPosition = layoutManager.findLastCompletelyVisibleItemPosition()
-                if(lastPosition == adapter.itemCount - 1)
+                if (lastPosition == adapter.itemCount - 1)
                     viewModel.loadRepositories()
             }
         })
@@ -63,7 +64,7 @@ class RepositoryActivity : AppCompatActivity() {
     }
 
     private fun updateView(state: ViewState?) {
-        when(state) {
+        when (state) {
             ViewState.EMPTY -> updateViewsVisibility(emptyViewVisibility = View.VISIBLE)
             ViewState.FIRST_LOADING -> updateViewsVisibility(loadingViewVisibility = View.VISIBLE)
             ViewState.LOADING -> updateViewsVisibility(loadingBarVisibility = View.VISIBLE,
@@ -72,11 +73,12 @@ class RepositoryActivity : AppCompatActivity() {
             ViewState.ERROR -> showSnackError()
             ViewState.LIST_ITEM -> updateViewsVisibility(itemListVisibility = View.VISIBLE)
         }
+        launchTalkBackContent(state)
     }
 
     private fun updateList(page: ApiResponse<Page>?) {
-        page?.let{
-            if(it.errorMessage != null) {
+        page?.let {
+            if (it.errorMessage != null) {
                 viewModel.getState().value = if (viewModel.repositories.isEmpty())
                     ViewState.EMPTY_ERROR else ViewState.ERROR
                 return
@@ -97,16 +99,31 @@ class RepositoryActivity : AppCompatActivity() {
         startActivity(sendToRepositoryPulls)
     }
 
-    private fun updateViewsVisibility(itemListVisibility: Int = View.GONE,
-                                      emptyViewVisibility: Int = View.GONE,
-                                      loadingViewVisibility: Int = View.GONE,
-                                      errorViewVisibility: Int = View.GONE,
-                                      loadingBarVisibility: Int = View.GONE) {
+    private fun updateViewsVisibility(
+            itemListVisibility: Int = View.GONE,
+            emptyViewVisibility: Int = View.GONE,
+            loadingViewVisibility: Int = View.GONE,
+            errorViewVisibility: Int = View.GONE,
+            loadingBarVisibility: Int = View.GONE) {
         repository_recycler_view.visibility = itemListVisibility
         empty_view_text.visibility = emptyViewVisibility
         loading_progress.visibility = loadingViewVisibility
         error_view_text.visibility = errorViewVisibility
         load_more_bar.visibility = loadingBarVisibility
+    }
+
+    private fun launchTalkBackContent(state: ViewState?) {
+        repository_layout_root.announceForAccessibility(getString(
+                when (state) {
+                    ViewState.EMPTY -> R.string.accessibility_empty
+                    ViewState.FIRST_LOADING -> R.string.accessibility_initial_loading
+                    ViewState.LOADING -> R.string.accessibility_initial_loading
+                    ViewState.EMPTY_ERROR -> R.string.accessibility_initial_error
+                    ViewState.ERROR -> R.string.accessibility_initial_error
+                    ViewState.LIST_ITEM -> R.string.accessibility_new_items
+                    else -> R.string.accessibility_initial_error
+                }
+        ))
     }
 
     private fun showSnackError() {
@@ -120,7 +137,7 @@ class RepositoryActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        if(viewModel.repositories.isNotEmpty()) {
+        if (viewModel.repositories.isNotEmpty()) {
             val layoutManager = repository_recycler_view.layoutManager as LinearLayoutManager
             val lastPosition = layoutManager.findLastCompletelyVisibleItemPosition()
             outState.putInt(RECYCLER_VIEW_LAST_VISIBLE_INDEX, lastPosition)
@@ -128,7 +145,7 @@ class RepositoryActivity : AppCompatActivity() {
     }
 
     private fun restoreInstanceState(savedInstanceState: Bundle) {
-        if(savedInstanceState.containsKey(RECYCLER_VIEW_LAST_VISIBLE_INDEX)){
+        if (savedInstanceState.containsKey(RECYCLER_VIEW_LAST_VISIBLE_INDEX)) {
             viewModel.getState().value = ViewState.LIST_ITEM
             adapter.addItems(viewModel.repositories)
             adapter.notifyDataSetChanged()

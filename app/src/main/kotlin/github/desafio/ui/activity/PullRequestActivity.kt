@@ -94,6 +94,7 @@ class PullRequestActivity : AppCompatActivity() {
             ViewState.ERROR -> updateViewsVisibility(errorViewVisibility = View.VISIBLE)
             ViewState.LIST_ITEM -> updateViewsVisibility(itemListVisibility = View.VISIBLE)
         }
+        launchTalkBackContent(state)
     }
 
     private fun updateList(pullRequests: ApiResponse<List<PullRequest>>?) {
@@ -124,6 +125,20 @@ class PullRequestActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         pull_request_list.adapter = adapter
         pull_request_list.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+    }
+
+    private fun launchTalkBackContent(state: ViewState?) {
+        pull_request_root.announceForAccessibility(getString(
+                when (state) {
+                    ViewState.EMPTY -> R.string.accessibility_empty_pr
+                    ViewState.FIRST_LOADING -> R.string.accessibility_initial_loading_pr
+                    ViewState.LOADING -> R.string.accessibility_initial_loading_pr
+                    ViewState.EMPTY_ERROR -> R.string.accessibility_initial_error_pr
+                    ViewState.ERROR -> R.string.accessibility_initial_error_pr
+                    ViewState.LIST_ITEM -> R.string.accessibility_new_items_pr
+                    else -> R.string.accessibility_initial_error_pr
+                }
+        ))
     }
 
     private fun listViewItemClicked(url: String) {

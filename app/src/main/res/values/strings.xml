@@ -12,4 +12,18 @@
 
     <string name="accessibility_fork_symbol">Number of Forks</string>
     <string name="accessibility_star_symbol">Number of Stars</string>
+
+    <string name="accessibility_initial_loading">Carregando repositórios</string>
+    <string name="accessibility_initial_error">Houve um problema para carregar os repositórios</string>
+    <string name="accessibility_initial_items">Lista de repositórios carregada</string>
+    <string name="accessibility_loading_more">Carregando novos reposiórios</string>
+    <string name="accessibility_new_items">Novos repositórios carregados</string>
+    <string name="accessibility_empty">Não há nenhum repositório</string>
+
+    <string name="accessibility_initial_loading_pr">Carregando Pull Requests</string>
+    <string name="accessibility_initial_error_pr">Houve um problema para carregar os Pull Requests</string>
+    <string name="accessibility_initial_items_pr">Lista de Pull Requests carregada</string>
+    <string name="accessibility_loading_more_pr">Carregando novos Pull Requests</string>
+    <string name="accessibility_new_items_pr">Novos Pull Requests carregados</string>
+    <string name="accessibility_empty_pr">Não há nenhum Pull Request</string>
 </resources>
