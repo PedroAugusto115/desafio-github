@@ -6,6 +6,7 @@ import github.desafio.repository.RepositoriesRepository
 import github.desafio.viewmodel.PullRequestViewModel
 import github.desafio.viewmodel.RepositoryViewModel
 import org.koin.android.ext.koin.androidContext
+import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
@@ -22,6 +23,6 @@ class CustomApplication : Application() {
 val myModule = module {
     single { RepositoriesRepository() }
     single { PullRequestRepository() }
-    single { RepositoryViewModel(get()) }
-    single { PullRequestViewModel(get()) }
+    viewModel { RepositoryViewModel(get()) }
+    viewModel { PullRequestViewModel(get()) }
 }

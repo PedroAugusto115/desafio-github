@@ -72,7 +72,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime:${architectureVersion}"
     implementation "androidx.lifecycle:lifecycle-extensions:${architectureVersion}"
 
-
     // Injection
     implementation "org.koin:koin-android:$koinVersion"
     implementation "org.koin:koin-android-viewmodel:$koinVersion"
@@ -107,7 +106,10 @@ dependencies {
     androidTestImplementation "com.squareup.okhttp3:mockwebserver:${okHttpVersion}"
     androidTestUtil "androidx.test:orchestrator:${testRules}"
 
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
     testImplementation "androidx.test.ext:junit:${jUnitVersion}"
+    testImplementation "io.mockk:mockk:${mockkVersion}"
+    testImplementation "io.mockk:mockk-android:${mockkVersion}"
 }
 
 project.gradle.taskGraph.whenReady {

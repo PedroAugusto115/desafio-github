@@ -1,5 +1,7 @@
 package github.desafio.viewmodel
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import github.desafio.SingleLiveEvent
 import github.desafio.api.ApiResponse
@@ -12,10 +14,11 @@ class PullRequestViewModel(val api: PullRequestRepository) : ViewModel() {
 
     var pulls = mutableListOf<PullRequest>()
 
-    private val pullRequestResponse: SingleLiveEvent<ApiResponse<List<PullRequest>>> = SingleLiveEvent()
+    private var pullRequestResponse: MutableLiveData<ApiResponse<List<PullRequest>>> = MutableLiveData()
+
     private val state: SingleLiveEvent<ViewState> = SingleLiveEvent()
 
-    fun getPullRequests(repository: Repository): SingleLiveEvent<ApiResponse<List<PullRequest>>> {
+    fun getPullRequests(repository: Repository): MutableLiveData<ApiResponse<List<PullRequest>>> {
         if( pullRequestResponse.value == null ) {
             loadPullRequests(repository.owner.name, repository.name)
         }
@@ -35,6 +38,6 @@ class PullRequestViewModel(val api: PullRequestRepository) : ViewModel() {
         if (pulls.isEmpty()) state.value = ViewState.FIRST_LOADING
         else state.value = ViewState.LOADING
 
-        api.getPullRequestByRepository(pullRequestResponse, creator, repository)
+        pullRequestResponse = api.getPullRequestByRepository(creator, repository)
     }
 }

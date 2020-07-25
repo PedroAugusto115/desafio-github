@@ -6,6 +6,7 @@ ext {
     gsonConverterVersion = '2.5.0'
     jUnitVersion = '1.1.1'
     koinVersion = "2.1.5"
+    mockkVersion = "1.9.2"
     okHttpVersion = '3.8.1'
     orchestratorVersion = '1.0.1'
     picassoVersion = '2.5.2'

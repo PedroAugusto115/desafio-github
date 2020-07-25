@@ -7,22 +7,25 @@ import retrofit2.Response
 
 class PullRequestRepository {
 
-    fun getPullRequestByRepository(items: MutableLiveData<ApiResponse<List<PullRequest>>>,
-                                   creator: String, repository: String){
+    fun getPullRequestByRepository(
+            creator: String,
+            repository: String
+    ) : MutableLiveData<ApiResponse<List<PullRequest>>> {
+        val liveData = MutableLiveData<ApiResponse<List<PullRequest>>>()
         RemoteData.getInstance().getRepositoryPullRequests(creator = creator,
                 repository = repository).enqueue(object : CallbackRequest<List<PullRequest>>() {
             override fun success(response: Response<List<PullRequest>>) {
-                items.postValue(success(data = response.body()!!))
+                liveData.postValue(success(data = response.body()!!))
             }
 
             override fun failureHttp(response: Response<List<PullRequest>>?) {
-                items.postValue(error(msg = response?.message(), data = null))
+                liveData.postValue(error(msg = response?.message(), data = null))
             }
 
             override fun failure(throwable: Throwable) {
-                items.postValue(error(msg = throwable.message, data = null))
+                liveData.postValue(error(msg = throwable.message, data = null))
             }
         })
+        return liveData
     }
-
 }

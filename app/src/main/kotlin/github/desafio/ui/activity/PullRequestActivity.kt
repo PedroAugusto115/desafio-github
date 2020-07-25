@@ -98,7 +98,7 @@ class PullRequestActivity : AppCompatActivity() {
     }
 
     private fun updateList(pullRequests: ApiResponse<List<PullRequest>>?) {
-        pullRequests?.let{
+        pullRequests?.let {
             if(it.errorMessage != null) {
                 viewModel.getViewState().value = if (viewModel.pulls.isEmpty())
                     ViewState.EMPTY_ERROR
@@ -107,18 +107,18 @@ class PullRequestActivity : AppCompatActivity() {
                 return
             }
 
-            val newData = it.data!!.toMutableList()
+            it.data?.let { newData ->
+                if (newData.isEmpty()) {
+                    viewModel.getViewState().value = ViewState.EMPTY
+                    return
+                }
 
-            if (newData.isEmpty()) {
-                viewModel.getViewState().value = ViewState.EMPTY
-                return
+                viewModel.pulls = newData.toMutableList()
+                viewModel.getViewState().value = ViewState.LIST_ITEM
+
+                adapter.addItems(viewModel.pulls)
+                adapter.notifyDataSetChanged()
             }
-
-            viewModel.pulls = newData
-            viewModel.getViewState().value = ViewState.LIST_ITEM
-
-            adapter.addItems(viewModel.pulls)
-            adapter.notifyDataSetChanged()
         }
     }
 
